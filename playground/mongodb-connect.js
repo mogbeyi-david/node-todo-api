@@ -1,4 +1,3 @@
-//const MongoClient = require('mongodb').MongoClient;
 const {MongoClient, ObjectID} = require('mongodb');
 
 MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
@@ -17,17 +16,17 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
   //   console.log(JSON.stringify(result.ops, undefined, 4));
   // });
 
-  // db.collection('Users').insertOne({
-  //   name: 'Amoo Abeeb Adesina',
-  //   age: 20,
-  //   location: 'Lagos'
-  // }, (err, result) => {
-  //   if (err) {
-  //     return console.log('Unable to create connection', err);
-  //   }
-  //   console.log(result.ops[0]._id.getTimestamp());
-  //   console.log(JSON.stringify(result.ops, undefined, 4));
-  // });
+  db.collection('users').insertOne({
+    username: 'Emmanuel Makandiwa',
+    email: 'makandiwa@gmail.com',
+    password: 'makandiwa'
+  }, (err, result) => {
+    if (err) {
+      return console.log('Unable to create connection', err);
+    }
+    console.log(result.ops[0]._id.getTimestamp());
+    console.log(JSON.stringify(result.ops, undefined, 4));
+  });
 
   db.close();
 });
